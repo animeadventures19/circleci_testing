@@ -1,0 +1,19 @@
+orbs:
+  comprehensive: carbonetes/carbonetes@1.0.9
+jobs:
+  build:
+    machine: true
+    steps:
+      - comprehensive/scan:
+          username: '${USERNAME}'
+          password: '${PASSWORD}'
+          registryUri: '${REGISTRY_URI}'
+          repoImageTag: 'rommuelleropen/deduplication:latest'
+          failOnPolicy: false
+          timeout: 500
+version: 2.1
+workflows:
+  carbonetes:
+    jobs:
+      - build:
+          context: credentials
